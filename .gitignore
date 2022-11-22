@@ -1,0 +1,23 @@
+# Ignore DS_Store system files
+*.DS_Store
+/analyses//ready_set
+/analyses/random_dots/dotsTask_peixoto
+/analyses/random_dots/M1Opto_dan
+/crossval/
+/data/
+/dynamics/
+/hankel/
+/plotting
+/util/
+/preprocessing/
+/models/twoarearnn/archive
+
+
+
+
+
+
+
+
+
+
