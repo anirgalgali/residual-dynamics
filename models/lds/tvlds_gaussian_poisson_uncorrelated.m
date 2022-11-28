@@ -382,7 +382,7 @@ if(strcmp(options.observation_model, 'gaussian'))
         
         A_ols = cat(2,A_ols{:});
         
-        [A_ols_stats] = computeDerivedDynamicsQuantities_v2(A_ols,'abs','right', ones(size(A_ols,3),1),...
+        [A_ols_stats] = computeDerivedDynamicsQuantities(A_ols,'abs','right', ones(size(A_ols,3),1),...
             analysis.result.final_model{icond}.time(2) - analysis.result.final_model{icond}.time(1));
 
         stat_names = fieldnames(A_ols_stats);

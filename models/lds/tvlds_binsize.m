@@ -151,7 +151,7 @@ for ivar = 1: length(latent_noise_variances)
 
         opts_final.lag = {opt_lags(ib)};
 
-        [result_final{ivar,ib}] = fit_final_resdyn_model(residuals_binned{ib}, ...
+        [result_final{ivar,ib}] = fit_residual_dynamics(residuals_binned{ib}, ...
             data_binned{ib}.time, data_binned{ib}.time,...
             ones(1,length(data_binned{ib}.time)), ones(size(residuals_binned{ib},3),1), opts_final);
 
@@ -178,7 +178,7 @@ end
 % This bins the ground truth matrices that have been defined at a finer
 % temporal resolution
 [binned_A] = compute_binned_groundtruthdynamics(options(1).A, options(1).dt, reference_bin_size);
-[~,~,eigenvalue_groundtruth] = my_eigenshuffle_cmplxAdjustments_v2(binned_A,'abs');
+[~,~,eigenvalue_groundtruth] = my_eigenshuffle(binned_A,'abs');
 
 %% Plotting rescaled eigenvalues as function of bin-size
 

@@ -80,7 +80,7 @@ if(isempty(direction))
    opts.hankel_order = analysis.fit_pars.hankel_order;
    opts.hankel_rank = cellfun(@(x) x.(fit_opts.hankel_criterion).(fit_opts.hankel_type),analysis.cv_hankel_opt,'uni',false);
    opts.do_cross_validate_noise_model = false;
-   [result_fit] = fit_final_resdyn_model(residuals, time, time_rel, time_labels, trial_labels, opts);
+   [result_fit] = fit_residual_dynamics(residuals, time, time_rel, time_labels, trial_labels, opts);
 
 elseif(~isempty(direction))
     
@@ -92,7 +92,7 @@ elseif(~isempty(direction))
    end
    opts.do_cross_validate_noise_model = false;
    residuals = applydynamicsSubspaceProjection(residuals, direction);
-   [result_fit] = fit_final_resdyn_model(residuals, time, time_rel, time_labels, trial_labels, opts);
+   [result_fit] = fit_residual_dynamics(residuals, time, time_rel, time_labels, trial_labels, opts);
    
 end
 

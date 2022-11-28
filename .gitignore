@@ -1,15 +1,12 @@
 # Ignore DS_Store system files
 *.DS_Store
-/analyses//ready_set
-/analyses/random_dots/dotsTask_peixoto
-/analyses/random_dots/M1Opto_dan
-/crossval/
+/analyses/random_dots/archive
+/analyses/random_dots/misc/behavior
+/analyses/random_dots/misc/fano_factor
+/analyses/random_dots/misc/pipeline_validation
 /data/
-/dynamics/
-/hankel/
-/plotting
-/util/
-/preprocessing/
+/util/archive
+/models/toymodels2d/
 /models/twoarearnn/archive
 
 
