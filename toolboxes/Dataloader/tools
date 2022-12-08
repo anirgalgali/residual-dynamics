@@ -1,0 +1,86 @@
+function rr = testmodel(pars,sft,ct,ort,sfm,cm,orm,r0,q0)
+% DOG + Suppressive Gaussian
+%  rr = cycdogcrms(pars,sf,tf,ct,ort,cm,orm,fs,dur)
+%  model temporal responses of an lgn cell to a grating of 
+%  varying sizes, contrasts, spatial and temporal frequencies.
+%  arguments sf,tf,c and or can be scalars or vectors of same length.
+%  assumes sinusoidal reponses. response phase constant over all stimulus
+%  conditions. response amplitude determined by DOG + Suppressive Gaussian.% %  sf: spatial frequency, tf: temporal frequency, c: contrast, or: outer radius
+%  sf, c and or can be scalars or vectors of same length.
+%  fs: sampling frequency (time axis) - dur: stimulus duration
+%  assumes constant number of bins: both fs and dur are scalars
+
+switch (nargin)
+	case(9)
+    case(0)
+        rr = {'\sigma_c','Rmax','\sigma_s/\sigma_c','g','c50','\sigma_i','kmask','\sigma_f'};
+        return;
+    otherwise
+        error('Need to provide 0 or 9 args')
+end
+
+argsizes = [size(sft); size(ct); size(ort); size(sfm); size(cm); size(orm)];
+
+nstim = unique(argsizes(:,2));
+nrepeats = unique(argsizes(:,1));
+
+if length(nstim)>1 | length(nrepeats)>1
+	error('all input matrices must have same sizes');
+end
+
+sigmac	= pars(1); % DOG center width
+Rmax   	= pars(2); % overall gain
+sigmas	= pars(3)*pars(1); % DOG surround/center width ratio
+g       = pars(4); % DOG surround gain relative to center
+c50	    = pars(5); % semisaturation contrast (fixed to 1)
+sigmai  = pars(6); % inhibitory profile width
+kmask   = pars(7); % relative weigth of the mask in contrast measure
+sigmaf  = pars(8); % width of the gaussian lp filter at input of normalization stage
+
+uct = unique(ct);
+uort = unique(ort);
+usft = unique(sft);
+
+nuct = length(uct);
+nuort = length(uort);
+nusft = length(usft);
+
+ucm = unique(cm);
+uorm = unique(orm);
+usfm = unique(sfm);
+
+nucm = length(ucm);
+nuorm = length(uorm);
+nusfm = length(usfm);
+
+% compute amplitude of first harmonic using DOG model
+% test grating
+ampt = zeros(size(ort));
+for isft = 1:nusft
+	for iort = 1:nuort
+        match = find(ort == uort(iort) & sft == usft(isft));
+        ctr = quad(@Mod_dDOG_drho,0,min(uort(iort),3*sigmac),1e-6,0,usft(isft),sigmac,0.0);
+        srd = quad(@Mod_dDOG_drho,0,min(uort(iort),3*sigmas),1e-6,0,usft(isft),sigmas,0.0);
+        ampt(match) = real(1.0*ctr-g*srd);
+	end
+end
+
+% clocal contrast measured based on stimulus energy falling under
+% a 2d Gaussian.
+ctest2 = (ct.*gaussian(sigmaf,sft)).^2.*(1-exp(-ort.^2/2/sigmai^2));
+cmask2 = (cm.*gaussian(sigmaf,sfm)).^2.*(1-exp(-orm.^2/2/sigmai^2));
+clocal = sqrt(ctest2+kmask*cmask2);
+
+gain = Rmax.*ct./(c50+clocal);
+% intracell is amplitude of intracellular sinusoidal response
+intracell = gain.*ampt;
+% extracell is first harmonic of (rectified) extracellular response 
+extracell = zeros(size(intracell));
+samples=find(intracell~=0);
+extracell(samples) = real((r0*sqrt(1-(r0^2)./(intracell(samples).^2))+intracell(samples).*acos(-r0./intracell(samples)))/pi);
+rr = extracell;
+
+% frequency response of a gaussian filter
+function r=gaussian(sigma,sf)
+omega = 2*pi*sf;
+r = exp(-.5*sigma^2*omega.^2);
