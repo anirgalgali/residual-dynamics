@@ -1,7 +1,6 @@
 # Ignore DS_Store system files
 *.DS_Store
 /analyses/random_dots/archive
-/analyses/random_dots/misc/behavior
 /analyses/random_dots/misc/fano_factor
 /analyses/random_dots/misc/pipeline_validation
 /data/
