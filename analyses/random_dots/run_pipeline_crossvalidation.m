@@ -32,8 +32,7 @@ bin_size = 45;
 % this loads the cell array 'data_aligned', which is a n_configs x 1 cell
 % array of struct. Each struct contains the aligned trial and residuals of
 % a single task configuration
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
-data_path = './data/processedneuraldata/';
+data_path = './data/analyses/';
 file_name = sprintf('%s%s%d%s',animal,'_aligned_reppasdotsTask_binsize=',bin_size,'ms.mat');
 load(fullfile(data_path,file_name)); 
 

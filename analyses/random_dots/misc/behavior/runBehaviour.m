@@ -30,10 +30,15 @@ plotpars.pref_col = [0 0 1];
 plotpars.anti_col = [1 0 0];
 plotpars.FontSize = 8;
 plotpars.FontName = 'Helvetica';
-plotpars.save_fig_path = '/Users/Aniruddh/Google Drive/Manuscript_Galgalietal2019/Figures';
+plotpars.save_fig_path = './figures/'; % enter a valid save path
 plotpars.doSave = false;
 animals = {'Tex';'Vito'};
-data_path = sprintf('%s%s',DIRS.analysis,'analyses/');
+data_path = './data/analyses/';
+
+if(isempty(strfind(DIRS.analysis,'neuraldata')))
+    DIRS.analysis = fullfile(DIRS.analysis,'/neuraldata/');
+end
+
 for iani = 1:length(animals)
     plotBehaviour(animals{iani}, data_path, plotpars);
 end

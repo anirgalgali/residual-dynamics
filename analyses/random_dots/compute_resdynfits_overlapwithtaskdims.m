@@ -22,8 +22,7 @@ do_save_vars = false;
 
 %% Load aligned data
 
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
-data_path = './data/processedneuraldata/';
+data_path = './data/analyses/';
 file_name = sprintf('%s%s%d%s',animal,'_aligned_reppasdotsTask_binsize=',bin_size,'ms.mat');
 load(fullfile(data_path,file_name)); 
 
@@ -146,8 +145,7 @@ end
 
 %% Sotring results
 if(do_save_vars)
-    cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
-    save_file_path = './data/processedneuraldata/';
+    save_file_path = './data/analyses/';
     result.data_identifier = sprintf('%s%s%d%s%d%s%d%s%d',animal,'_ndim=',n_dim,'_lag=',lag,'_alpha=',opts_final.alpha{1}(1),'_',opts_final.alpha{1}(2));
     result.resdynfit = data_agg;
     result.resdynfit_final_raw = result_final;

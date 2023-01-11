@@ -1,5 +1,5 @@
 function [impulse_response_groundTruth,impulse_response_predicted, fit_result_all,perturb_dirs_latent,varargout] = ...
-    compute_twoarea_impulse_responses_v2(input_pars,sim_pars, net_pars, obs_pars, areas, result_cv, perturb_pars, fit_pars)
+    compute_twoarea_impulse_responses(input_pars,sim_pars, net_pars, obs_pars, areas, result_cv, perturb_pars, fit_pars)
 
 %{ This function simulates the ground-truth impulse response and evaluates the predicted impulse respone for a given two-area network
 %

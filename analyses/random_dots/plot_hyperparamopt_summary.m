@@ -10,8 +10,7 @@ rseed = rng('default');
 %% Choose animal and bin-size
 animal = {'Tex','Vito'};
 bin_size = 45;
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
-data_path = './data/processedneuraldata/';
+data_path = './data/analyses/';
 result_cvlagdim = cell(length(animal),1);
 result_cvsmooth = cell(length(animal),1);
 

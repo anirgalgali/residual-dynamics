@@ -14,7 +14,7 @@ all 3 model types
 % Author: Aniruddh Galgali (Oct 2018)
 %
 %}
-clear all
+clearvars -excet DIRS
 clc
 
 %% Initializing all the models
@@ -183,9 +183,9 @@ integration_models.data.states = states;
 integration_models.data.inputs = inputs;
 integration_models.data.phase = analysis_flow;
 if(~isunix)
-    save_path = './';
+    save_path = '';
 else
-    save_path = './simulations/toymodels/';
+    save_path = fullfile(DIRS.analysis,'/simulations/toymodels/');
 end
 save(fullfile(save_path,strcat('integration_models_newAnalysisPipeline_',date,'.mat')),'integration_models');
 

@@ -12,7 +12,7 @@ clc
 
 monkey = 'Tex';
 bin_size = 45;
-load_file_path = './data/processedneuraldata';
+load_file_path = './data/analyses/';
 data_file_name = sprintf('%s%s',monkey,'_ndim=8_lag=3_alpha=200_50_allconfigsresdynresults.mat');
 load(fullfile(load_file_path, data_file_name))
 dt =  bin_size/1000;

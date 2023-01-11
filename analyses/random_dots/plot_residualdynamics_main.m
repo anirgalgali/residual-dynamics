@@ -17,10 +17,9 @@ clc
 
 %% Loading stored results
 
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
 animals = {'Tex';'Vito'};
 bin_size = 45;
-load_file_path = './data/processedneuraldata';
+load_file_path = './data/analyses/';
 result = cell(length(animals),1);
 for iani =1:length(animals)
     data_file_name = sprintf('%s%s',animals{iani},'_ndim=8_lag=3_alpha=200_50_allconfigsresdynresults.mat');

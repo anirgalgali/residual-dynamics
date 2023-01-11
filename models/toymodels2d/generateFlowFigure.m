@@ -6,8 +6,8 @@
 clearvars -except DIRS
 close all 
 clc
-do_save_fig = False;
-data_load_path = './simulations/toymodels';
+do_save_fig = false;
+data_load_path = fullfile(DIRS.analysis,'/simulations/toymodels/');
 save_fig_path = ''; % enter a valid path indicating where to save figures
 
 file_name = 'integration_models_newAnalysisPipeline_09-Dec-2018.mat';

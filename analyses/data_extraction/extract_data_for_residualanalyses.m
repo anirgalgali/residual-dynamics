@@ -12,7 +12,9 @@ rseed = rng('default');
 close all
 
 %%
-
+if(isempty(strfind(DIRS.analysis,'neuraldata')))
+    DIRS.analysis = fullfile(DIRS.analysis,'/neuraldata/');
+end
 pexp_data = ProjectLoad('array_TDR_dotsTask_data');
 animal = 'Tex';
 
@@ -23,7 +25,7 @@ switch animal
         sessions_to_exclude = {'2007_08_03V';'2007_01_19V'};
 end
 
-
+%%
 pars.root_project = pexp_data;
 pars.session.exclude_list = sessions_to_exclude;
 pars.session.target_discrepancy_threshold = 0.4;
@@ -62,7 +64,7 @@ pars.single_trial.delay_length_bin_boundaries = [0 0.4 0.6 0.8 1.0 1.5];
 
 project_name = sprintf('%s%d%s','array_reppasdotsTask_datasegmented_binsize=', pars.single_trial.bin_size,'ms');
 pexp_segmented = ProjectCreate(project_name);
-
+%%
 save_project.name = project_name;
 save_project.root_dir = DIRS.analysis;
 save_project.loader = pexp_segmented;

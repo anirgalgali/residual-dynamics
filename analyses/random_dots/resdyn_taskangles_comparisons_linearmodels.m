@@ -23,8 +23,7 @@ clc
 
 animal = 'Tex';
 bin_size = 45;
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics');
-data_path = './data/processedneuraldata';
+data_path = './data/analyses/';
 data_file_name = sprintf('%s%s',animal,'_ndim=8_lag=3_alpha=200_50_allconfigsresdynresults.mat');
 load(fullfile(data_path, data_file_name))
 

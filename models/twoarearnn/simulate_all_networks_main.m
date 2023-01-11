@@ -210,11 +210,17 @@ result.analysis = analysis;
 
 if(do_save_vars)
     
-    save_file_path ='./'
-    file_name = sprintf('%s%d%s%d%s%.2f%s%.4f%s',' TwoAreaModel_weightSweepsModelEstimates_mu0=',...
-        input_pars.mu0,'Hz_zeroCohBinsize=',obs_pars.bin_size,'_sigmaLatent=',input_pars.sigma_noise,...
-        '_sigmaNoise=',obs_pars.sigma_obs_noise,'.mat');
-    
+    save_file_path = fullfile(DIRS.analysis,'/simulations/twoarearnn/')
+    if(sim_pars.doFbk)
+        file_name = sprintf('%s%d%s%d%s%.2f%s%.4f%s',' TwoAreaModelwithFbk_weightSweepsModelEstimates_mu0=',...
+            input_pars.mu0,'Hz_zeroCohBinsize=',obs_pars.bin_size,'_sigmaLatent=',input_pars.sigma_noise,...
+            '_sigmaNoise=',obs_pars.sigma_obs_noise,'.mat');
+    else
+        file_name = sprintf('%s%d%s%d%s%.2f%s%.4f%s',' TwoAreaModelnoFbk_weightSweepsModelEstimates_mu0=',...
+            input_pars.mu0,'Hz_zeroCohBinsize=',obs_pars.bin_size,'_sigmaLatent=',input_pars.sigma_noise,...
+            '_sigmaNoise=',obs_pars.sigma_obs_noise,'.mat');
+    end
+
     save(fullfile(save_file_path, file_name),'analysis','-v7.3');
 
 end

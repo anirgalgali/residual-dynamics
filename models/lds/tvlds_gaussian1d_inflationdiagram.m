@@ -13,7 +13,7 @@ clc
 rseed = rng('default');
 rng(rseed);
 save_fig_format = '-pdf';
-save_fig_path = './figures/simulations';
+save_fig_path = './figures/simulations'; % create this path if it doesnt exist
 %%
 options.rseed = rseed;
 

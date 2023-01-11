@@ -11,11 +11,11 @@ close all
 
 
 %%
-data_load_path = './simulations/toymodels';
+data_load_path = fullfile(DIRS.analysis,'/simulations/toymodels/');
 file_name = 'movement_models_newAnalysisPipeline_22-Nov-2018.mat';
 load(fullfile(data_load_path,file_name));
 save_fig_path = '';% specify a valid path for saving figures.
-save_file_path = './neuraldata/analyses/';
+save_file_path = fullfile(DIRS.analysis,'/analyses/');
 do_save_fig = false;
 
 %% Setting high-level simulation parameters

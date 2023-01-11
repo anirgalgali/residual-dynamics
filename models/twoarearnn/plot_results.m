@@ -12,7 +12,7 @@ model_pars = table([0.3600;0.2000],...
                    [0;0.2400],...
              'VariableNames',{'self' 'fwd' 'fbk'});
 
-file_path = './data/twoarearnn/';
+file_path = fullfile(DIRS.analysis,'/simulations/twoarearnn/');
 file_name = 'nofeedbackmodels.mat'; % choose either 'withfeedback' or 'nofeedback' here
 do_save_vars = false;
 

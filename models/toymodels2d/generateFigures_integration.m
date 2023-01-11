@@ -6,10 +6,10 @@
 
 %% Load Data
 
-clear all
+clearvars -except DIRS
 close all 
 clc
-data_load_path = './simulations/toymodels';
+data_load_path = fullfile(DIRS.analysis,'/simulations/toymodels/');
 file_name = 'integration_models_newAnalysisPipeline_09-Dec-2018.mat';
 load(fullfile(data_load_path,file_name));
 

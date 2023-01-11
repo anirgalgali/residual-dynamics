@@ -11,8 +11,7 @@ rseed = rng('default');
 %% Choosing animal and dataset to fit
 animal = 'Tex';
 bin_size = 45;
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
-data_path = './data/processedneuraldata/';
+data_path = './data/analyses/';
 file_name = sprintf('%s%s%d%s',animal,'_nonaligned_reppasdotsTask_binsize=',bin_size,'ms.mat');
 load(fullfile(data_path,file_name)); 
 
@@ -241,7 +240,7 @@ for icond = 1: nconds
     set(gcf,'Position',[566 -318 973 1131]);
     
     if(do_save_fig)
-        save_fig_path = '';
+        save_fig_path = './figures/';
         fig_name = sprintf('%s%s%s%d%s%.1f%s',session_name,'_SmoothCV','Choice',icond,'_repeatedCVmeanand',plotpars.err_scale,plotpars.err_metric);
         export_fig(fullfile(save_fig_path, fig_name),'-painters','-transparent',save_fig_format);
     end

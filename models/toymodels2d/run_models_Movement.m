@@ -15,7 +15,7 @@ a match with the condition-average trajectories of the rotations model
 % Author: Aniruddh Galgali (Oct 2018)
 %
 %}
-clear all
+clearvars -except DIRS
 clc
 
 %% Initializing all the models
@@ -209,6 +209,6 @@ movement_models.data.phase = analysis_flow;
 if(~isunix)
     save_path = '';
 else
-    save_path = './simulations/toymodels/';
+    save_path = fullfile(DIRS.analysis,'/simulations/toymodels/');
 end
 save(fullfile(save_path,strcat('movement_models_newAnalysisPipeline_',date,'.mat')),'movement_models');

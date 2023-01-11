@@ -8,8 +8,7 @@
 clearvars -except DIRS
 clc
 rseed = rng('default');
-cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics')
-data_path = './data/processedneuraldata/';
+data_path = './data/analyses/';
 
 %% Specifying the session you want to fit. 
 

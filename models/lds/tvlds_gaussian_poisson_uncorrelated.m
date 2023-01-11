@@ -18,7 +18,7 @@ close all
 rseed = 24321; %24321;
 rng(rseed)
 do_save_vars = false;
-save_file_path = './data/simulations';
+save_file_path = fullfile(DIRS.analysis,'/simulations/)'; % create this path if it doesnt exist
 
 %% Define the basic parameters of LDS simulations
 

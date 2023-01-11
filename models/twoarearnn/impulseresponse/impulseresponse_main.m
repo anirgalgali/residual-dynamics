@@ -10,7 +10,7 @@ close all
 
 %% Loading stored results
 
-file_path = './data/twoarearnn/';
+file_path = fullfile(DIRS.analysis,'/simulations/twoarearnn/');
 file_name = 'nofeedbackmodels.mat'; % choose either 'withfeedback' or 'nofeedback' here
 do_save_vars = false;
 

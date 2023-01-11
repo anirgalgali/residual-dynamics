@@ -16,7 +16,7 @@ clc
 rseed = 2461;
 options.rseed = rseed;
 rng(rseed)
-save_fig_path = './figures/simulations';
+save_fig_path = './figures/simulations'; % create this path if it doesnt exist
 
 %%
 

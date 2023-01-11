@@ -2,8 +2,6 @@
 *.DS_Store
 /analyses/random_dots/archive
 /analyses/random_dots/misc/fano_factor
-/analyses/random_dots/misc/pipeline_validation
-/data/
 /dynamics/archive
 /util/archive
 /models/toymodels2d/archive

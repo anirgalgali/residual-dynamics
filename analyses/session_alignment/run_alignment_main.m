@@ -9,7 +9,9 @@ clc
 %% Choosing animal
 
 animal = 'Tex';
-
+if(isempty(strfind(DIRS.analysis,'neuraldata')))
+    DIRS.analysis = fullfile(DIRS.analysis,'/neuraldata/');
+end
 %% Extracting alignment and residuals for a bin-size of 45ms
 project_name = 'array_reppasdotsTask_datasegmented_binsize=45ms';
 pexp_data = ProjectLoad_v2(project_name);
@@ -31,7 +33,7 @@ pars_.residual.exclude_trials = {{'delay_length', 1}};
 pars_.config_vars = 'target_config';
 [data_aligned] =  compute_alignment_and_residuals(pexp_data, animal, pars_);
 cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics');
-save_file_path = './data/processedneuraldata/';
+save_file_path = './data/analyses/';
 save_file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=45ms.mat');
 save(fullfile(save_file_path,save_file_name),'data_aligned','-v7.3');
 %% Extractiing non-aligned residuals (for the single session fits)
@@ -55,7 +57,7 @@ pars_.residual.exclude_trials = {{'delay_length', 1}};
 
 pars_.config_vars = 'target_config';
 [data_aligned] =  compute_alignment_and_residuals(pexp_data, animal, pars_);
-save_file_path = '/Volumes/WD Passport/WorkPC_2021Backup_final/Projects/ResDynPFC/analysis_datasets/neuraldata/';
+save_file_path = './data/analyses/';
 save_file_name = sprintf('%s%s',animal,'_nonaligned_reppasdotsTask_binsize=45ms.mat');
 save(fullfile(save_file_path,save_file_name),'data_aligned','-v7.3');
 %% Extracting alignment and residuals for a bin-size of 15ms
@@ -69,7 +71,7 @@ pexp_data = ProjectLoad_v2(project_name);
 
 if(strcmp(pars_.alignment.type,'precomputed'))
    cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics');
-   file_path = './data/processedneuraldata/';
+   file_path = './data/analyses/';
    file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=45ms.mat');
    load(fullfile(file_path,file_name))
    pars_.precomputed_alignment.U_orth = cellfun(@(x) x.U_align,data_aligned.aligned_single_trials,'uni',false);
@@ -84,7 +86,7 @@ pars_.residual.exclude_trials = {{'delay_length', 1}};
 
 pars_.config_vars = 'target_config';
 [data_aligned] =  compute_alignment_and_residuals(pexp_data, animal, pars_);
-save_file_path = '/Volumes/WD Passport/WorkPC_2021Backup_final/Projects/ResDynPFC/analysis_datasets/neuraldata/';
+save_file_path = './data/analyses/';
 if(strcmp(pars_.alignment.type,'precomputed'))
     save_file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=15ms_alignbw=45ms.mat');
 elseif(strcmp(pars_.alignment.type,'full'))
@@ -102,7 +104,7 @@ pexp_data = ProjectLoad_v2(project_name);
 
 if(strcmp(pars_.alignment.type,'precomputed'))
    cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics');
-   file_path = './data/processedneuraldata/';
+   file_path = './data/analyses/';
    file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=45ms.mat');
    load(fullfile(file_path,file_name))
    pars_.precomputed_alignment.U_orth = cellfun(@(x) x.U_align,data_aligned.aligned_single_trials,'uni',false);
@@ -117,7 +119,7 @@ pars_.residual.exclude_trials = {{'delay_length', 1}};
 
 pars_.config_vars = 'target_config';
 [data_aligned] =  compute_alignment_and_residuals(pexp_data, animal, pars_);
-save_file_path = '/Volumes/WD Passport/WorkPC_2021Backup_final/Projects/ResDynPFC/analysis_datasets/neuraldata/';
+save_file_path = './data/analyses/';
 if(strcmp(pars_.alignment.type,'precomputed'))
     save_file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=30ms_alignbw=45ms.mat');
 elseif(strcmp(pars_.alignment.type,'full'))
@@ -135,7 +137,7 @@ pexp_data = ProjectLoad_v2(project_name);
 
 if(strcmp(pars_.alignment.type,'precomputed'))
    cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics');
-   file_path = './data/processedneuraldata/';
+   file_path = './data/analyses/';
    file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=45ms.mat');
    load(fullfile(file_path,file_name))
    pars_.precomputed_alignment.U_orth = cellfun(@(x) x.U_align,data_aligned.aligned_single_trials,'uni',false);
@@ -150,7 +152,7 @@ pars_.residual.exclude_trials = {{'delay_length', 1}};
 
 pars_.config_vars = 'target_config';
 [data_aligned] =  compute_alignment_and_residuals(pexp_data, animal, pars_);
-save_file_path = '/Volumes/WD Passport/WorkPC_2021Backup_final/Projects/ResDynPFC/analysis_datasets/neuraldata/';
+save_file_path = './data/analyses/';
 if(strcmp(pars_.alignment.type,'precomputed'))
     save_file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=60ms_alignbw=45ms.mat');
 elseif(strcmp(pars_.alignment.type,'full'))
@@ -168,7 +170,7 @@ pexp_data = ProjectLoad_v2(project_name);
 
 if(strcmp(pars_.alignment.type,'precomputed'))
    cd('/Users/Aniruddh/Work_PhD/Residual Dynamics/residual_dynamics');
-   file_path = './data/processedneuraldata/';
+   file_path = './data/analyses/';
    file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=45ms.mat');
    load(fullfile(file_path,file_name))
    pars_.precomputed_alignment.U_orth = cellfun(@(x) x.U_align,data_aligned.aligned_single_trials,'uni',false);
@@ -183,7 +185,7 @@ pars_.residual.exclude_trials = {{'delay_length', 1}};
 
 pars_.config_vars = 'target_config';
 [data_aligned] =  compute_alignment_and_residuals(pexp_data, animal, pars_);
-save_file_path = '/Volumes/WD Passport/WorkPC_2021Backup_final/Projects/ResDynPFC/analysis_datasets/neuraldata/';
+save_file_path = './data/analyses/';
 if(strcmp(pars_.alignment.type,'precomputed'))
     save_file_name = sprintf('%s%s',animal,'_aligned_reppasdotsTask_binsize=90ms_alignbw=45ms.mat');
 elseif(strcmp(pars_.alignment.type,'full'))
