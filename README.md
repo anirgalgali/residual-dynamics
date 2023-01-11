@@ -4,7 +4,10 @@ Associated data is available at https://doi.org/10.5281/zenodo.7378387
 
 Usage:
 
-Step 1: Extract the compressed data files available at the link above to the data folder in this repository.
-Step 2: run setPaths.m to set paths and directories.
+Step 1: Create a folder titled 'data' within this repository.
+
+Step 2: Extract the compressed data files (available at the link above) to the 'data' folder.
+
+Step 3: modify paths to data and code in setPaths.m and run it before using the code.
 
 
